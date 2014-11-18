@@ -1,0 +1,119 @@
+______
+Set up
+
+>  git config --global user.name "Mehmet Suzen"
+>  git config --global user.email "suzen@acm.org"
+
+______________
+Clone go_works
+
+> git clone https://github.com/dupree-cy/go_works
+> git remote -v
+> git clone https://github.com/dupree-cy/go_works
+> git remote add upstream
+
+
+See: https://www.youtube.com/watch?v=2KmHtgtEZ1s
+     Get started with Go
+     https://talks.golang.org/2012/tutorial.slide#1
+_______________________
+workspace/
+  bin # executable binaries
+  pkg # compiled object files
+  src # source cod
+
+_____
+Paths
+
+export GOPATH=$HOME/workdir/go_works
+export PATH=$PATH:$GOPATH/bin
+
+_________________
+Test Installation
+Under go_work after clone
+
+hello.go content:
+
+  package main
+
+  import "fmt"
+
+  func main() {
+    fmt.Println("Greetings, fellow gopher")
+  }
+
+
+go_works>  go run src/hello.go
+Greetings, fellow gopher
+
+__________________________________________________
+Choose a namespace 'github.com/dupree-cy/go_works'
+and 'hello' directory and copy hello.go
+
+mkdir -p $GOPATH/src/github.com/dupree-cy/go_works
+mkdir -p $GOPATH/src/github.com/dupree-cy/go_works/hello
+go_works> cp src/hello.go $GOPATH/src/github.com/dupree-cy/go_works/hello
+
+________________________________
+Install and run: No build script
+
+> go install github.com/dupree-cy/go_works/hello
+> $GOPATH/bin/hello or hello (if PATH is defined)
+
+______________
+Reddit Project
+
+A command line program that fetches and displays the latest headlines
+from the golang web page from Reddit
+
+* Make an HTTP request to the Reddit API
+* Decode the JSON response into a Go data structure.
+* Print each link's title, URL, and number of comments.
+
+__________________
+Choose a namespace
+mkdir -p $GOPATH/src/github.com/dupree-cy/go_works/reddit
+
+Create main.go : go functions may return multiple arguments
+
+package main
+
+import (
+    "io"
+    "log"
+    "net/http"
+    "os"
+)
+
+func main() {
+  resp, err := http.Get("http://reddit.com/r/golang.json")
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  if resp.StatusCode != http.StatusOK {
+    log.Fatal(resp.Status)
+  }
+
+  _, err = io.Copy(os.Stdout, resp.Body)
+  if err != nil {
+    log.Fatal(err)
+  }
+}
+
+
+Now install:
+  go install github.com/dupree-cy/go_works/reddit
+and run
+  reddit
+
+The Reddit API returns JSON data like this
+
+{"data": {"children": [
+  {"data": {
+    "title": "The Go homepage",
+    "url": "http://golang.org/",
+    ...
+  }},
+  ...
+]}}
