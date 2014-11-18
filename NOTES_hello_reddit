@@ -117,3 +117,9 @@ The Reddit API returns JSON data like this
   }},
   ...
 ]}}
+
+
+
+Fetch all ; 
+
+go get github.com/dupree-cy/go_works
