@@ -1,0 +1,30 @@
+______
+Set up
+
+>  git config --global user.name "Mehmet Suzen"
+>  git config --global user.email "suzen@acm.org"
+
+______________
+Clone go_works
+
+> git clone https://github.com/dupree-cy/go_works
+> git remote -v
+> git clone https://github.com/dupree-cy/go_works
+> git remote add upstream
+
+
+See: https://www.youtube.com/watch?v=2KmHtgtEZ1s
+     Get started with Go
+     https://talks.golang.org/2012/tutorial.slide#1
+_______________________
+workspace/
+  bin # executable binaries
+  pkg # compiled object files
+  src # source cod
+
+_____
+Paths
+
+export GOPATH=$HOME/workdir/go_works
+export PATH=$PATH:$GOPATH/bin
+

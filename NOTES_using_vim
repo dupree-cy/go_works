@@ -1,0 +1,79 @@
+______________________________
+Adding 'vim' go functionality: 
+
+Vundle, vim-go
+
+1. mkdir ~/.vim/bundle
+2. git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+3. git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+4  git clone https://github.com/Shougo/neocomplete.vim.git  ~/.vim/bundle/neocomplete
+5. Add below  into ~/.vimrc
+6. In vim apply :PluginInstall
+
+tag bar(looks cool)
+1. sudo apt-get install exuberant-ctags for ctags
+2. go get -u github.com/jstemmer/gotags
+3. git clone https://github.com/majutsushi/tagbar.git ~/.vim/bundle/tagbar
+
+Nerdtree
+1. git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+
+----8<--------------------
+syntax enable
+filetype plugin on
+"set number  
+let g:go_disable_autoinstall = 0
+let g:neocomplete#enable_at_startup = 1
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'fatih/vim-go'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+nmap <F8> :TagbarToggle<CR> " tagbar related
+
+let g:tagbar_type_go = {  
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+"Nerdtree
+map <C-n> :NERDTreeToggle<CR>
+----8<--------------------

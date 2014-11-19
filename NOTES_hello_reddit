@@ -119,6 +119,8 @@ The Reddit API returns JSON data like this
 ]}}
 
 
+Make a package:
+cd $GOPATH/src/github.com/dupree-cy/go_works/reddit
 
 Fetch all ; 
 
