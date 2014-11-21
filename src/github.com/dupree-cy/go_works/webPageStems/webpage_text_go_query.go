@@ -23,7 +23,8 @@ import (
 func main() {
 	buffer_no_word := 20000 // Max number of words on the page
 	re := regexp.MustCompile("^[a-zA-Z0-9_]*$")
-	url := "http://revolutionanalytics.com/why-revolution-analytics"
+	//url := "http://revolutionanalytics.com/why-revolution-analytics"
+	url := "http://godoc.org/golang.org/x/net/html"
 	doc, err := goquery.NewDocument(url)
 	if err != nil {
 		log.Fatal(err)

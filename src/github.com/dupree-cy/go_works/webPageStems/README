@@ -1,11 +1,5 @@
-gokogiri
- sudo apt-get install libxml2-dev
- go get github.com/moovweb/gokogiri
- go test github.com/moovweb/gokogiri/html
- go test github.com/moovweb/gokogiri/xml
 
 Use goquery
   https://github.com/PuerkitoBio/goquery
 
 
-stemmer
